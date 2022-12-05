@@ -156,7 +156,6 @@ namespace Laba_5_Valeeva_PrI102
 
         static void Main(string[] args)
         {
-            Task2();
         }
     }
 }
