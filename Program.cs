@@ -26,6 +26,14 @@ namespace Laba_5_Valeeva_PrI102
             return false;
         }
 
+        static bool NumCharOrNot(string num)
+        {
+            char a;
+            if (char.TryParse(num, out a))
+                return true;
+            return false;
+        }
+
         static bool NumIntOrNotWithoutTryParse(string num)
         {
             foreach (char c in num.ToCharArray())
@@ -38,9 +46,24 @@ namespace Laba_5_Valeeva_PrI102
             return true;
         }
 
+        static string AreTheNumsEqual(int numInt, float numFl1, float numFl2)
+        {
+
+            if ((numFl1 == numFl2) && (numFl1 == numInt))
+                return ($"Все числа типов INT и FLOAT равны ({numInt} = {numFl1} = {numFl2})");
+            else if (numFl1 == numFl2)
+                return ($"Числа FLOAT равны ({numFl1} = {numFl2})");
+            else if (numFl1 == numInt)
+                return ($"Первое число FLOAT и число INT равны ({numFl1} = {numInt})");
+            else if (numFl2 == numInt)
+                return ($"Второе число FLOAT и число INT равны ({numFl2} = {numInt})");
+            else
+                return ($"Числа {numInt}, {numFl1}, {numFl2} не равны между собой");
+        }
+
         static void Task1()
         {
-            
+            Console.Clear();
             float floatNum1 = float.NaN;
             float floatNum2;
             while (true)
@@ -67,8 +90,6 @@ namespace Laba_5_Valeeva_PrI102
                         Console.Write("Повторите ввод числа");
                         floatNum1 = floatNum2;
                         Thread.Sleep(1000);
-
-
                     }
                 }
                 else if (strNum == "q")
@@ -127,6 +148,7 @@ namespace Laba_5_Valeeva_PrI102
 
         static void Task2()
         {
+            Console.Clear();
             Console.WriteLine("Введите целочисленное число: ");
             string strNum = Console.ReadLine();
 
@@ -154,8 +176,119 @@ namespace Laba_5_Valeeva_PrI102
             }
         }
 
+        static void Task3()
+        {
+            Console.Clear();
+            int numInt; //первая часть
+            float numFloat;
+            char numChar;
+
+            string strInt;
+            string strFloat;
+            string strChar;
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("ПЕРВЫЙ НОМЕР ");
+                Console.WriteLine("Введите число INT");
+                strInt = Console.ReadLine();
+                Console.WriteLine("Введите число FLOAT");
+                strFloat = Console.ReadLine();
+                Console.WriteLine("Введите символ CHAR");
+                strChar = Console.ReadLine();
+                Console.Clear();
+                if ((NumIntOrNot(strInt)) && (NumFloatOrNot(strFloat)) && (NumCharOrNot(strChar)))
+                {
+                    numInt = Convert.ToInt32(strInt);
+                    numFloat = Convert.ToSingle(strFloat);
+                    numChar = Convert.ToChar(strChar);
+                    Console.WriteLine($"Ввод корректный, ваши числа: \n" +
+                                      $"INT: {strInt}\n" +
+                                      $"FLOAT: {strFloat}\n" +
+                                      $"CHAR: {strChar}");
+                    Console.ReadKey();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Повторите ввод");
+                    Thread.Sleep(1600);
+                }
+            }
+
+            strInt = ""; //вторая часть
+            string strFloat1;
+            string strFloat2;
+
+            numInt = 0;
+            float numFloat1;
+            float numFloat2;
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("ВТОРОЙ НОМЕР ");
+                Console.WriteLine("Введите число INT");
+                strInt = Console.ReadLine();
+                Console.WriteLine("Введите первое число FLOAT");
+                strFloat1 = Console.ReadLine();
+                Console.WriteLine("Введите второе число FLOAT");
+                strFloat2 = Console.ReadLine();
+
+                if ((NumIntOrNot(strInt)) && (NumFloatOrNot(strFloat1)) && (NumFloatOrNot(strFloat2)))
+                {
+                    numInt = Convert.ToInt32(strInt);
+                    numFloat1 = Convert.ToSingle(strFloat1);
+                    numFloat2 = Convert.ToSingle(strFloat2);
+                    Console.WriteLine(AreTheNumsEqual(numInt, numFloat1, numFloat2));
+                    Console.ReadKey();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Повторите ввод");
+                    Thread.Sleep(1600);
+                }
+            }
+
+            strInt = "";     //третья часть
+            strFloat = "";
+            numInt = 0;
+            numFloat = 0;
+            bool flag = false;
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("ТРЕТИЙ НОМЕР ");
+                Console.WriteLine("Введите число INT");
+                strInt = Console.ReadLine();
+                Console.WriteLine("Введите число FLOAT");
+                strFloat = Console.ReadLine();
+                if ((NumIntOrNot(strInt)) && (NumFloatOrNot(strFloat)))
+                {
+                    numInt = Convert.ToInt32(strInt);
+                    numFloat = Convert.ToSingle(strFloat);
+                    flag = true;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Повторите ввод");
+                    Thread.Sleep(1600);
+                }
+            }
+            var sum = numInt + numFloat;
+            if (flag)
+            {
+                Console.WriteLine($"Ваша сумма {numInt} + {numFloat} = {sum} (тип float)");
+                Console.ReadKey();
+            }
+
+
+        }
+
         static void Main(string[] args)
         {
+            Task3();
         }
     }
 }
