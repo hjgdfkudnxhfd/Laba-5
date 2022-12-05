@@ -26,6 +26,18 @@ namespace Laba_5_Valeeva_PrI102
             return false;
         }
 
+        static bool NumIntOrNotWithoutTryParse(string num)
+        {
+            foreach (char c in num.ToCharArray())
+            {
+                if (!(((int)c > 47) && ((int)c < 58)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         static void Task1()
         {
             
@@ -71,9 +83,80 @@ namespace Laba_5_Valeeva_PrI102
                 Console.Clear();
             }
         }
-    
+
+        static int Summation(string strNum)
+        {
+            int sum = 0;
+            foreach (char c in strNum)
+            {
+                switch (c)
+                {
+                    case '1':
+                        sum += 1;
+                        break;
+                    case '2':
+                        sum += 2;
+                        break;
+                    case '3':
+                        sum += 3;
+                        break;
+                    case '4':
+                        sum += 4;
+                        break;
+                    case '5':
+                        sum += 5;
+                        break;
+                    case '6':
+                        sum += 6;
+                        break;
+                    case '7':
+                        sum += 7;
+                        break;
+                    case '8':
+                        sum += 8;
+                        break;
+                    case '9':
+                        sum += 9;
+                        break;
+                    default: 
+                        break;
+                }
+            }
+            return sum;
+        }
+
+        static void Task2()
+        {
+            Console.WriteLine("Введите целочисленное число: ");
+            string strNum = Console.ReadLine();
+
+            bool minus = false;
+            if (strNum[0] == '-')
+            {
+                strNum = strNum.Substring(1);
+                minus = true;
+            }
+
+            bool flag = NumIntOrNotWithoutTryParse(strNum);
+            int sum = 0;
+            if (flag)
+            {
+                sum = Summation(strNum);
+                if (minus)
+                    strNum = "-" + strNum;
+                Console.WriteLine($"Сумма цифр числа {strNum} = {sum}");
+                Console.ReadKey();
+            }
+            else 
+            {
+                Console.WriteLine("Некорректный ввод числа ");
+                Console.ReadKey();
+            }
+        }
+
         static void Main(string[] args)
         {
+            Task2();
         }
     }
 }
