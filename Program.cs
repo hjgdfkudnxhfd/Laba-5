@@ -89,7 +89,7 @@ namespace Laba_5_Valeeva_PrI102
                     {
                         Console.Write("Повторите ввод числа");
                         floatNum1 = floatNum2;
-                        Thread.Sleep(1000);
+                        Console.ReadKey();
                     }
                 }
                 else if (strNum == "q")
@@ -212,7 +212,7 @@ namespace Laba_5_Valeeva_PrI102
                 else
                 {
                     Console.WriteLine("Повторите ввод");
-                    Thread.Sleep(1600);
+                    Console.ReadKey();
                 }
             }
 
@@ -246,7 +246,7 @@ namespace Laba_5_Valeeva_PrI102
                 else
                 {
                     Console.WriteLine("Повторите ввод");
-                    Thread.Sleep(1600);
+                    Console.ReadKey();
                 }
             }
 
@@ -273,7 +273,7 @@ namespace Laba_5_Valeeva_PrI102
                 else
                 {
                     Console.WriteLine("Повторите ввод");
-                    Thread.Sleep(1600);
+                    Console.ReadKey();
                 }
             }
             var sum = numInt + numFloat;
@@ -283,7 +283,39 @@ namespace Laba_5_Valeeva_PrI102
                 Console.ReadKey();
             }
 
-
+            strChar = ""; //четвертое задание
+            strInt = "";
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("ЧЕТВЕРТЫЙ НОМЕР ");
+                Console.WriteLine("Введите число INT");
+                strInt = Console.ReadLine();
+                Console.WriteLine("Введите число CHAR");
+                strChar = Console.ReadLine();
+                if ((NumIntOrNot(strInt)) && (NumCharOrNot(strChar)))
+                {
+                    numInt = Convert.ToInt32(strInt);
+                    numChar = Convert.ToChar(strChar);
+                    if (numInt == (int)numChar)
+                    {
+                        Console.WriteLine($"числа INT и CHAR равны (код {numChar} = {strInt})");
+                        Console.WriteLine($"Число INT = {numInt} в виде символа = {(char)numInt}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"числа INT и CHAR НЕравны (код '{numChar}' не равен {strInt})");
+                        Console.WriteLine($"Число INT ({numInt}) в виде символа = '{(char)numInt}'");
+                    }
+                    Console.ReadKey();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Повторите ввод");
+                    Console.ReadKey();
+                }
+            }
         }
 
         static void Main(string[] args)
