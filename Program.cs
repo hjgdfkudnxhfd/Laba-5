@@ -43,7 +43,10 @@ namespace Laba_5_Valeeva_PrI102
                     return false;
                 }
             }
-            return true;
+            if (num.Length > 0)
+                return true;
+            else
+                return false;
         }
 
         static string AreTheNumsEqual(int numInt, float numFl1, float numFl2)
@@ -132,7 +135,7 @@ namespace Laba_5_Valeeva_PrI102
                 string strNum = Console.ReadLine();
                 if (NumIntOrNot(strNum))
                 {
-                    Console.WriteLine((char)Convert.ToInt32(strNum));
+                    Console.WriteLine($"Символ под номером {strNum} = '{(char)Convert.ToInt32(strNum)}'");
                     Console.ReadKey();
                 }
                 else if (NumFloatOrNot(strNum))
@@ -140,7 +143,7 @@ namespace Laba_5_Valeeva_PrI102
                     floatNum2 = Convert.ToSingle(strNum);
                     if (floatNum2 == floatNum1)
                     {
-                        Console.WriteLine("Введеные числа равны, выход");
+                        Console.WriteLine($"Введеные числа float равны ({floatNum1} = {floatNum2}), выход");
                         Console.ReadKey();
                         break;
                     }
@@ -175,7 +178,7 @@ namespace Laba_5_Valeeva_PrI102
                     break;
 
                 bool minus = false;
-                if (strNum[0] == '-')
+                if (strNum.Length > 0 && strNum[0] == '-')
                 {
                     strNum = strNum.Substring(1);
                     minus = true;
@@ -419,10 +422,38 @@ namespace Laba_5_Valeeva_PrI102
 
         static void Main(string[] args)
         {
-            Task1();
-            Task2();
-            Task3();
-            Task4();
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Какое задание хотите проверить? (для выхода нажмите 'qwe')\n" +
+                                  "1. Задание 1\n" +
+                                  "2. Задание 2\n" +
+                                  "3. Задание 3\n" +
+                                  "4. Задание 4\n");
+                string task = Console.ReadLine();
+                if (task == "qwe")
+                break;
+                switch (task)
+                {
+                    case "1":
+                        Task1();
+                        break;
+                    case "2":
+                        Task2();
+                        break;
+                    case "3":
+                        Task3();
+                        break;
+                    case "4":
+                        Task4();
+                        break;
+                    default:
+                        Console.WriteLine("Введите номер задания: ");
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                }
+            }
         }
     }
 }
